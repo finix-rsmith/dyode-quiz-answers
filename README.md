@@ -30,49 +30,49 @@ Dev Challenge I: Liquid Challenge
   {% if paginate.pages > 1 %}
     <nav role=“navigation”>
       <ol>
-	    {% if paginate.previous %}
-		  <li>
-		    <a href={{ paginate.previous.url }}>
-			  <
-			</a>
-		  </li>
-		{% else %}
-		  <li class=“disabled”>
-		    <
-		  </li>
-		{% endif %}
+        {% if paginate.previous %}
+          <li>
+            <a href={{ paginate.previous.url }}>
+              <
+            </a>
+          </li>
+        {% else %}
+          <li class=“disabled”>
+            <
+          </li>
+        {% endif %}
 
-		{% for part in paginate.parts %}
-		  {% if part.is_link %}
-		    <li>
-			  <a href={{ part.url }}>{{ part.title }}</a>
-			</li>
-		  {% else %}
-		    {% if part.title == paginate.current_page %}
-			  <li class=“active”>
-			    {{ part.title }}
-			  </li>
-			{% else %}
-			  <li>
-			    {{ part.title }}
-			  </li>
-			{% endif %}
-		  {% endif %}
-		{% endfor %}
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <li>
+              <a href={{ part.url }}>{{ part.title }}</a>
+            </li>
+          {% else %}
+            {% if part.title == paginate.current_page %}
+              <li class=“active”>
+                {{ part.title }}
+              </li>
+            {% else %}
+              <li>
+                {{ part.title }}
+              </li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
 
-		{% if paginate.next %}
-		  <li>
-		    <a href={{ paginate.next.url }}>
-			  >
-			</a>
-		  </li>
-		{% else %}
-		  <li class=“disabled”>
-		    >
-		  </li>
-		{% endif %}
-	  </ol>
-	</nav>
+        {% if paginate.next %}
+          <li>
+            <a href={{ paginate.next.url }}>
+              >
+            </a>
+          </li>
+        {% else %}
+          <li class=“disabled”>
+            >
+          </li>
+        {% endif %}
+      </ol>
+    </nav>
   {% endif %}
 {% endpaginate %}
 
