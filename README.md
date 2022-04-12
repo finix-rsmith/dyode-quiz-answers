@@ -8,13 +8,13 @@ Dev Challenge I: Liquid Challenge
 
 **In theme customization under /Sections, open the homepage.liquid file and replace static text content with dynamic content outputs mapped to reference data, e.g.:**
 
-```
+```javascript
 {{ page.title }}
 ```
 
 2. How would you add the collection featured image as a banner on the collection liquid template?
 
-```
+```jsx
 {% if collection.image %}
 	<img src={{ collection.image.src  | image_url: width: 2048  }} alt={{ collection.image }}  />
 {% else %}
@@ -25,7 +25,7 @@ Dev Challenge I: Liquid Challenge
 
 3. Using liquid code and HTML, create a simple pagination container, "< 1 2 ... 5 >".
 
-```
+```jsx
 {% paginate collection.products by 10 %}
 	{% if paginate.pages > 1 %}
 		<nav role=“navigation”>
@@ -84,14 +84,14 @@ Dev Challenge I: Liquid Challenge
 
 4. Using liquid code, access the product named "Blue T-Shirt". Store the id, title, handle, price, url, and image in variables.
 
-```
+```javascript
 {% assign blueTshirt = all_products["blue-t-shirt"] %}
-{{ blueTshirt.id }}
-{{ blueTshirt.title }}
-{{ blueTshirt.handle }}
-{{ blueTshirt.price }}
-{{ blueTshirt.url }}
-{{ blueTshirt.image }}
+{% assign blueTshirtId = blueTshirt.id %}
+{% assign blueTshirtTitle = blueTshirt.title %}
+{% assign blueTshirtHandle = blueTshirt.handle %}
+{% assign blueTshirtPrice = blueTshirt.price %}
+{% assign blueTshirtUrl = blueTshirt.url %}
+{% assign blueTshirtImage = blueTshirt.image %}
 ```
 
 5. Using liquid code, create a key:value array using the list below. Loop through the array. Upon key type, store the value in a variable to be used later:
@@ -100,7 +100,7 @@ Dev Challenge I: Liquid Challenge
 - cloth:t-shirt
 - denim:jeans
 
-```
+```javascript
 {% assign some_items = "fruit:grape,vegetable:carrot,cloth:t-shirt,denim:jeans" | split: "," %}
 {% assign updated_items = "" | split: "," %}
 {% for item in some_items %}
