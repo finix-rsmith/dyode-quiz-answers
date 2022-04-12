@@ -16,10 +16,10 @@ Dev Challenge I: Liquid Challenge
 
 ```jsx
 {% if collection.image %}
-	<img src={{ collection.image.src  | image_url: width: 2048  }} alt={{ collection.image }}  />
+  <img src={{ collection.image.src  | image_url: width: 2048  }} alt={{ collection.image }}  />
 {% else %}
-	{% assign product = collection.products.first %}
-	<img src={{ product | image_url: width: 2048 }} alt={{ product.handle }} />
+  {% assign product = collection.products.first %}
+  <img src={{ product | image_url: width: 2048 }} alt={{ product.handle }} />
 {% endif %}
 ```
 
@@ -27,58 +27,58 @@ Dev Challenge I: Liquid Challenge
 
 ```jsx
 {% paginate collection.products by 10 %}
-	{% if paginate.pages > 1 %}
-		<nav role=“navigation”>
-			<ol>
-				{% if paginate.previous %}
-					<li>
-						<a href={{ paginate.previous.url }}>
-							<
-						</a>
-					</li>
-				{% else %}
-					<li class=“disabled”>
-						<
-					</li>
-				{% endif %}
+  {% if paginate.pages > 1 %}
+    <nav role=“navigation”>
+      <ol>
+	    {% if paginate.previous %}
+		  <li>
+		    <a href={{ paginate.previous.url }}>
+			  <
+			</a>
+		  </li>
+		{% else %}
+		  <li class=“disabled”>
+		    <
+		  </li>
+		{% endif %}
 
-				{% for part in paginate.parts %}
-					{% if part.is_link %}
-						<li>
-							<a href={{ part.url }}>{{ part.title }}</a>
-						</li>
-					{% else %}
-						{% if part.title == paginate.current_page %}
-							<li class=“active”>
-								{{ part.title }}
-							</li>
-						{% else %}
-							<li>
-								{{ part.title }}
-							</li>
-						{% endif %}
-					{% endif %}
-				{% endfor %}
+		{% for part in paginate.parts %}
+		  {% if part.is_link %}
+		    <li>
+			  <a href={{ part.url }}>{{ part.title }}</a>
+			</li>
+		  {% else %}
+		    {% if part.title == paginate.current_page %}
+			  <li class=“active”>
+			    {{ part.title }}
+			  </li>
+			{% else %}
+			  <li>
+			    {{ part.title }}
+			  </li>
+			{% endif %}
+		  {% endif %}
+		{% endfor %}
 
-				{% if paginate.next %}
-					<li>
-						<a href={{ paginate.next.url }}>
-							>
-						</a>
-					</li>
-				{% else %}
-					<li class=“disabled”>
-						>
-					</li>
-				{% endif %}
-			</ol>
-		</nav>
-	{% endif %}
+		{% if paginate.next %}
+		  <li>
+		    <a href={{ paginate.next.url }}>
+			  >
+			</a>
+		  </li>
+		{% else %}
+		  <li class=“disabled”>
+		    >
+		  </li>
+		{% endif %}
+	  </ol>
+	</nav>
+  {% endif %}
 {% endpaginate %}
 
 <style>
-	li {list-style: none; display: inline}
-	a {text-decoration: none}
+  li {list-style: none; display: inline}
+  a {text-decoration: none}
 </style>
 ```
 
@@ -104,13 +104,13 @@ Dev Challenge I: Liquid Challenge
 {% assign some_items = "fruit:grape,vegetable:carrot,cloth:t-shirt,denim:jeans" | split: "," %}
 {% assign updated_items = "" | split: "," %}
 {% for item in some_items %}
-	{% assign item_attributes = item | split ":" %}
-	{% assign item_key = item_attributes[0] %}
-	{% assign item_value = item_attributes[1] %}
-	{% capture key_value %}
-		{ {{ item_key }}: {{ item_value }} }
-	{% endcapture %}
-	{% assign updated_items = updated_items | concat: key_value %}
+  {% assign item_attributes = item | split ":" %}
+  {% assign item_key = item_attributes[0] %}
+  {% assign item_value = item_attributes[1] %}
+  {% capture key_value %}
+    { {{ item_key }}: {{ item_value }} }
+  {% endcapture %}
+  {% assign updated_items = updated_items | concat: key_value %}
 {% endfor %}
 {{ updated_items }}
 ```
